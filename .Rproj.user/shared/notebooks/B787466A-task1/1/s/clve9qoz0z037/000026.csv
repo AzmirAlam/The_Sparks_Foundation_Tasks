@@ -1,0 +1,6 @@
+"0","#Draw a plot of the data."
+"0","#install.packages(""ggplot2"")"
+"0",""
+"0",""
+"0","plot(data)"
+"0",""

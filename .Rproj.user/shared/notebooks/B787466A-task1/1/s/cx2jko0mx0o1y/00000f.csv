@@ -1,0 +1,4 @@
+"0","library(ggplot2)"
+"0","modelResiduals <- as.data.frame(residuals(model)) "
+"0","ggplot(modelResiduals, aes(residuals(model))) +"
+"0","  geom_histogram(fill='68', color='black')"

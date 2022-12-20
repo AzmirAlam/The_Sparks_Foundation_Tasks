@@ -1,0 +1,6 @@
+"0","#Draw a plot of the data."
+"0",""
+"0","ggplot(data,aes(Hours,Scores))+geom_point()"
+"2","Error in ggplot(data, aes(Hours, Scores)) : 
+  could not find function ""ggplot""
+"

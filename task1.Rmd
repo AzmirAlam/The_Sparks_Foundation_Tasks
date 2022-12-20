@@ -5,26 +5,108 @@ date: "2022-12-20"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+
+
+```{r}
+####Import dataset and preview.
+#install.packages("readr")
+library(readr)
+data <- 	read_csv("student_scores - student_scores.csv",show_col_types=FALSE)
+
+data
+head(data)
+ 
+```
+```{r}
+####Draw a plot of the data.
+#install.packages("ggplot2")
+
+
+plot(data)
+
 ```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+####Describe the dataset.
+dim(data)
+summary(data)
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+####checking correlation.
+data=data.frame(data,check.rows = TRUE)
+cor(data)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+####Create model.
+fit_1<- lm(Scores~Hours,data=data)
+summary(fit_1)
+```
+```{r}
+####Spliting train and test data set and build the model.
+#install.packages("caTools")
+library(caTools)
+set.seed(42)
+sampleSplit <- sample.split(Y=data$Scores, SplitRatio=0.7)
+trainSet <- subset(x=data, sampleSplit==TRUE)
+testSet <- subset(x=data, sampleSplit==FALSE)
+print(dim(trainSet))
+print(dim(testSet))
+model <- lm(Scores ~ Hours , data=trainSet)
+
+```
+
+```{r}
+####Check the residuals of the model.
+library(ggplot2)
+modelResiduals <- as.data.frame(residuals(model)) 
+ggplot(modelResiduals, aes(residuals(model))) +
+  geom_histogram(fill='68', color='black')
+```
+
+
+
+```{r}
+####Visualize the regression line.
+library(ggplot2)
+ggplot(data, aes(x = Hours, y = Scores)) +
+        geom_point(aes(color = Scores)) +
+        stat_smooth(method = "lm",
+        col = "orange", se = FALSE, size = .5
+)
+
+
+```
+
+
+
+
+```{r}
+
+#### comparing the predicted with actual value.
+pred <- predict(model, testSet)
+results <- cbind(pred,testSet$Scores) 
+colnames(results) <- c('pred','real')
+results <- as.data.frame(results)
+results
+
+
+
+```
+
+```{r}
+
+####prediction of score when a student study 9.25 hrs per day.
+Hours <- 9.5
+Hours <-as.data.frame(Hours)
+predicted_score <- predict(model, Hours)
+print(predicted_score)
+
+
+```
