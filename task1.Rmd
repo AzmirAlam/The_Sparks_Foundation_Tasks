@@ -6,19 +6,20 @@ output: html_document
 ---
 
 
-
-```{r}
 ####Import dataset and preview.
+```{r}
+
 #install.packages("readr")
 library(readr)
 data <- 	read_csv("student_scores - student_scores.csv",show_col_types=FALSE)
 
 data
 head(data)
- 
+
 ```
-```{r}
 ####Draw a plot of the data.
+```{r}
+
 #install.packages("ggplot2")
 
 
@@ -26,30 +27,32 @@ plot(data)
 
 ```
 
-
+####Describe the dataset.
 
 ```{r}
-####Describe the dataset.
+
 dim(data)
 summary(data)
 ```
 
-
+####checking correlation.
 
 ```{r}
-####checking correlation.
+
 data=data.frame(data,check.rows = TRUE)
 cor(data)
 ```
 
-
-```{r}
 ####Create model.
+```{r}
+
 fit_1<- lm(Scores~Hours,data=data)
 summary(fit_1)
 ```
-```{r}
+
 ####Spliting train and test data set and build the model.
+```{r}
+
 #install.packages("caTools")
 library(caTools)
 set.seed(42)
@@ -61,19 +64,19 @@ print(dim(testSet))
 model <- lm(Scores ~ Hours , data=trainSet)
 
 ```
-
-```{r}
 ####Check the residuals of the model.
+```{r}
+
 library(ggplot2)
 modelResiduals <- as.data.frame(residuals(model)) 
 ggplot(modelResiduals, aes(residuals(model))) +
   geom_histogram(fill='68', color='black')
 ```
-
+####Visualize the regression line.
 
 
 ```{r}
-####Visualize the regression line.
+
 library(ggplot2)
 ggplot(data, aes(x = Hours, y = Scores)) +
         geom_point(aes(color = Scores)) +
@@ -85,11 +88,11 @@ ggplot(data, aes(x = Hours, y = Scores)) +
 ```
 
 
-
+#### comparing the predicted with actual value.
 
 ```{r}
 
-#### comparing the predicted with actual value.
+
 pred <- predict(model, testSet)
 results <- cbind(pred,testSet$Scores) 
 colnames(results) <- c('pred','real')
@@ -99,10 +102,10 @@ results
 
 
 ```
-
+####prediction of score when a student study 9.25 hrs per day.
 ```{r}
 
-####prediction of score when a student study 9.25 hrs per day.
+
 Hours <- 9.5
 Hours <-as.data.frame(Hours)
 predicted_score <- predict(model, Hours)

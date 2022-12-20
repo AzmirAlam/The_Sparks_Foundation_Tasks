@@ -3,9 +3,9 @@
     "path": "G:/projectR/internR/task1.Rmd",
     "project_path": "task1.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "164093031",
     "contents": "",
-    "dirty": true,
+    "dirty": false,
     "created": 1671554170930.0,
     "source_on_save": false,
     "relative_order": 1,
@@ -17,11 +17,11 @@
         "scrollLine": "89"
     },
     "folds": "",
-    "lastKnownWriteTime": 1671557293,
+    "lastKnownWriteTime": 1671558456,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1671558382481,
+    "last_content_update": 1671558456703,
     "read_only": false,
     "read_only_alternatives": []
 }
