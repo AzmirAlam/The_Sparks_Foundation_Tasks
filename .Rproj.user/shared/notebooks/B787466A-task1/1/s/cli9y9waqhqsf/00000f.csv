@@ -1,7 +1,0 @@
-"0",""
-"0","# comparing the predicted with actual value."
-"0","pred <- predict(model, testSet)"
-"0","results <- cbind(pred,testSet$Scores) "
-"0","colnames(results) <- c('pred','real')"
-"0","results <- as.data.frame(results)"
-"0","results"

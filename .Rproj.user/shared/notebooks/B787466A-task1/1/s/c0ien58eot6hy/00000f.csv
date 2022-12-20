@@ -1,4 +1,4 @@
-"0","#Create model."
+"0",""
 "0","fit_1<- lm(Scores~Hours,data=data)"
 "0","summary(fit_1)"
 "1","

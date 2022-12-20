@@ -1,9 +1,7 @@
-"0","#Visualize the regression line."
+"0",""
 "0","library(ggplot2)"
 "0","ggplot(data, aes(x = Hours, y = Scores)) +"
 "0","        geom_point(aes(color = Scores)) +"
 "0","        stat_smooth(method = ""lm"","
 "0","        col = ""orange"", se = FALSE, size = .5"
 "0",")"
-"2","Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-Please use `linewidth` instead."

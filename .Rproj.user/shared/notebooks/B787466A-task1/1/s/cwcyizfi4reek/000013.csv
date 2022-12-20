@@ -1,4 +1,4 @@
-"0","#Spliting train and test data set."
+"0",""
 "0","#install.packages(""caTools"")"
 "0","library(caTools)"
 "0","set.seed(42)"

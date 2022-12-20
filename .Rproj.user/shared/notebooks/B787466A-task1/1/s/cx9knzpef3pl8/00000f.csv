@@ -1,5 +1,5 @@
 "0",""
-"0","#prediction of score when a student study 9.25 hrs per day."
+"0",""
 "0","Hours <- 9.5"
 "0","Hours <-as.data.frame(Hours)"
 "0","predicted_score <- predict(model, Hours)"

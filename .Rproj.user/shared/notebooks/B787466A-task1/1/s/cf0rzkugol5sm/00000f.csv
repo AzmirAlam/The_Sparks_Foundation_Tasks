@@ -1,4 +1,4 @@
-"0","#checking correlation."
+"0",""
 "0","data=data.frame(data,check.rows = TRUE)"
 "0","cor(data)"
 "1","      "

@@ -1,4 +1,4 @@
-"0","#Import dataset and preview."
+"0",""
 "0","#install.packages(""readr"")"
 "0","library(readr)"
 "0","data <- 	read_csv(""student_scores - student_scores.csv"",show_col_types=FALSE)"
