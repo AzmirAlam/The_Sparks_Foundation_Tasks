@@ -4,39 +4,33 @@ author: "Md. Azmir Alam"
 date: "2022-12-20"
 output: html_document
 ---
-
+#load the iris data and preview.
 ```{r}
 
-#loading required packages
+
 library(factoextra)
 library(cluster)
-
-#loading the iris data
-df <- iris[1:4]
-head(df)
+data <- iris[1:4]
+head(data)
 ```
+#selecet number of cluster
 
 ```{r}
 ##remove rows with missing values
-df <- na.omit(df)
+data <- na.omit(data)
 #scale each variable to have a mean of 0 and sd of 1
-df_scale <- scale(df)
+data_scale <- scale(data)
 
-#selecet number of cluster
-fviz_nbclust(df_scale, kmeans, method = "wss")
+fviz_nbclust(data_scale, kmeans, method = "wss")
 ```
-
-```{r}
-
 #perform k-means clustering with k = 3 clusters
+```{r}
 km <- kmeans(df_scale, centers = 3)
-
-#view results
 km
 ```
-
-```{r}
 #plot results of final k-means model
+```{r}
+
 fviz_cluster(km, data = df_scale)
 
 ```
