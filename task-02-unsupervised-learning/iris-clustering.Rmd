@@ -1,0 +1,50 @@
+---
+title: "Iris Clustering"
+author: "Md. Azmir Alam"
+date: "2022-12-20"
+output: html_document
+---
+
+## Import and preview the dataset
+
+```{r}
+library(factoextra)
+library(cluster)
+
+iris_data <- read.csv("data/iris.csv")
+features <- iris_data[, c(
+  "SepalLengthCm",
+  "SepalWidthCm",
+  "PetalLengthCm",
+  "PetalWidthCm"
+)]
+
+head(features)
+```
+
+## Prepare the features
+
+```{r}
+features <- na.omit(features)
+scaled_features <- scale(features)
+```
+
+## Select the number of clusters
+
+```{r}
+fviz_nbclust(scaled_features, kmeans, method = "wss")
+```
+
+## Perform K-means clustering
+
+```{r}
+set.seed(42)
+kmeans_model <- kmeans(scaled_features, centers = 3, nstart = 25)
+kmeans_model
+```
+
+## Visualise the clusters
+
+```{r}
+fviz_cluster(kmeans_model, data = scaled_features)
+```

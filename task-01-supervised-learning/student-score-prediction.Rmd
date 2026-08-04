@@ -1,0 +1,70 @@
+---
+title: "Student Score Prediction"
+author: "Md. Azmir Alam"
+date: "2022-12-20"
+output: html_document
+---
+
+## Import and preview the dataset
+
+```{r}
+library(readr)
+library(ggplot2)
+library(caTools)
+
+student_scores <- read_csv("data/student_scores.csv", show_col_types = FALSE)
+head(student_scores)
+```
+
+## Explore the data
+
+```{r}
+dim(student_scores)
+summary(student_scores)
+cor(student_scores)
+```
+
+```{r}
+ggplot(student_scores, aes(x = Hours, y = Scores)) +
+  geom_point(aes(color = Scores)) +
+  geom_smooth(method = "lm", color = "orange", se = FALSE, linewidth = 0.5) +
+  labs(title = "Study Hours and Student Scores")
+```
+
+## Create the regression model
+
+```{r}
+set.seed(42)
+sample_split <- sample.split(student_scores$Scores, SplitRatio = 0.7)
+train_set <- subset(student_scores, sample_split)
+test_set <- subset(student_scores, !sample_split)
+
+model <- lm(Scores ~ Hours, data = train_set)
+summary(model)
+```
+
+## Examine model residuals
+
+```{r}
+model_residuals <- data.frame(residual = residuals(model))
+
+ggplot(model_residuals, aes(x = residual)) +
+  geom_histogram(fill = "#68A9CF", color = "black") +
+  labs(title = "Distribution of Model Residuals")
+```
+
+## Compare predicted and actual scores
+
+```{r}
+predictions <- predict(model, test_set)
+results <- data.frame(predicted = predictions, actual = test_set$Scores)
+results
+```
+
+## Predict the score for 9.25 study hours
+
+```{r}
+new_student <- data.frame(Hours = 9.25)
+predicted_score <- predict(model, new_student)
+predicted_score
+```
