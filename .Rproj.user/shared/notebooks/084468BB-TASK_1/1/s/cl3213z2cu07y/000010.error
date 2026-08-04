@@ -1,1 +1,0 @@
-{"frames":[],"message":"Error in ggplot(data, aes(Hours, Scores)) : \n  could not find function \"ggplot\"\n"}
