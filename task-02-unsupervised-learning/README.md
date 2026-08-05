@@ -15,6 +15,18 @@ This task uses K-means clustering to identify groups in the Iris dataset.
 
 - [`iris-clustering.Rmd`](./iris-clustering.Rmd) — clustering analysis
 - [`data/iris.csv`](./data/iris.csv) — source dataset
+- [`outputs/optimal-number-of-clusters.png`](./outputs/optimal-number-of-clusters.png) — elbow-method chart
+- [`outputs/cluster-plot.png`](./outputs/cluster-plot.png) — K-means cluster visualisation
+
+## Visualisations
+
+### Optimal number of clusters
+
+![Elbow-method chart](./outputs/optimal-number-of-clusters.png)
+
+### K-means cluster plot
+
+![K-means cluster plot](./outputs/cluster-plot.png)
 
 ## Tools
 
