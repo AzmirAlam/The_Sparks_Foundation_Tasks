@@ -18,7 +18,7 @@ A structured collection of machine-learning and data-analysis tasks completed as
 |:---:|---|---|---|:---:|
 | 1 | [Student Score Prediction](./task-01-supervised-learning/) | Simple linear regression | R, R Markdown | Completed |
 | 2 | [Iris Clustering](./task-02-unsupervised-learning/) | K-means clustering | R, factoextra | Completed |
-| 3 | [Retail Data Analysis](./task-03-retail-eda/) | Exploratory data analysis | Python, Jupyter | In progress |
+| 3 | [Retail Data Analysis](./task-03-retail-eda/) | Exploratory data analysis | Python, Jupyter | Completed |
 
 ## Repository structure
 
